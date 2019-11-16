@@ -1,5 +1,7 @@
 # The CIDR library for create CIDR's from IP range.
 
+[![Build Status](https://travis-ci.com/dev-sl/cidr.svg?branch=master)](https://travis-ci.com/dev-sl/cidr)
+
 CIDR - Classless Inter-Domain Routing. [Wiki](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 
 ## Installing CIDR Library
@@ -33,7 +35,8 @@ composer update
 Usage example:
 
 ```php
-$parser = new \IpTool\Parser\CidrRangeParser();
+$netmaskResolver = new \IpTool\Resolver\NetmaskResolver();
+$parser          = new \IpTool\Parser\CidrRangeParser($netmaskResolver);
 
 $start = new \IpTool\Ip\Ip('1.0.0.0');
 $end   = new \IpTool\Ip\Ip('1.0.0.255');

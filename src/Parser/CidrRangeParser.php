@@ -5,18 +5,33 @@ namespace IpTool\Parser;
 use IpTool\Ip\Cidr;
 use IpTool\Ip\Ip;
 use IpTool\Ip\RangeInterface;
+use IpTool\Resolver\NetmaskResolver;
 
 class CidrRangeParser implements RangeParserInterface
 {
     private const MAX_PREFIX_BITS = 32;
 
     /**
+     * @var NetmaskResolver
+     */
+    private $netmaskResolver;
+
+    /**
+     * @param NetmaskResolver $netmaskResolver
+     */
+    public function __construct(NetmaskResolver $netmaskResolver)
+    {
+        $this->netmaskResolver = $netmaskResolver;
+    }
+
+    /**
      * {@inheritdoc}
+     * @return Cidr[]
      */
     public function parseRange(RangeInterface $range): array
     {
-        $start = ip2long((string)$range->getStart());
-        $end   = ip2long((string)$range->getEnd());
+        $start = ip2long((string) $range->getStart());
+        $end   = ip2long((string) $range->getEnd());
 
         $cidrs = [];
 
@@ -57,7 +72,7 @@ class CidrRangeParser implements RangeParserInterface
      *
      * @return int
      */
-    private function convertMaskToBits(string $netmask): int
+    private function convertNetmaskToBits(string $netmask): int
     {
         return $this->getBitsCount(ip2long($netmask));
     }
@@ -69,16 +84,8 @@ class CidrRangeParser implements RangeParserInterface
      */
     private function getMaxBits(string $ip): int
     {
-        return $this->convertMaskToBits($this->getNetmask($ip));
-    }
+        $netmask = $this->netmaskResolver->resolve($ip);
 
-    /**
-     * @param string $ip
-     *
-     * @return string
-     */
-    private function getNetmask(string $ip): string
-    {
-        return long2ip(-(ip2long($ip) & -(ip2long($ip))));
+        return $this->convertNetmaskToBits($netmask);
     }
 }
