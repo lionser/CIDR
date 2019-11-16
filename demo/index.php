@@ -1,5 +1,7 @@
 <?php
 
+require 'vendor/autoload.php';
+
 $parser = new \IpTool\Parser\CidrRangeParser();
 
 $start = new \IpTool\Ip\Ip('1.0.0.0');
