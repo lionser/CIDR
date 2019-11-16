@@ -1,0 +1,12 @@
+{
+    "name": "cidr/demo",
+    "authors": [
+        {
+            "name": "dev-sl",
+            "email": "gm.lion@bigmir.net"
+        }
+    ],
+    "require": {
+        "iptool/cidr": "^1.0"
+    }
+}
