@@ -2,7 +2,8 @@
 
 require 'vendor/autoload.php';
 
-$parser = new \IpTool\Parser\CidrRangeParser();
+$netmaskResolver = new \IpTool\Resolver\NetmaskResolver();
+$parser          = new \IpTool\Parser\CidrRangeParser($netmaskResolver);
 
 $start = new \IpTool\Ip\Ip('1.0.0.0');
 $end   = new \IpTool\Ip\Ip('1.0.0.255');

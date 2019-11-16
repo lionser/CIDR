@@ -7,6 +7,7 @@ use IpTool\Ip\Ip;
 use IpTool\Ip\IpRange;
 use IpTool\Parser\CidrRangeParser;
 use IpTool\Parser\RangeParserInterface;
+use IpTool\Resolver\NetmaskResolver;
 use PHPUnit\Framework\TestCase;
 
 class CidrRangeParserTest extends TestCase
@@ -23,7 +24,7 @@ class CidrRangeParserTest extends TestCase
     {
         parent::setUp();
 
-        $this->parser = new CidrRangeParser();
+        $this->parser = new CidrRangeParser(new NetmaskResolver());
     }
 
     /**
