@@ -35,14 +35,14 @@ composer update
 Usage example:
 
 ```php
-$netmaskResolver = new \IpTool\Resolver\NetmaskResolver();
-$parser          = new \IpTool\Parser\CidrRangeParser($netmaskResolver);
+$netmaskDetectror = new \IpTool\Detector\NetmaskDetector();
+$parser           = new \IpTool\Parser\CIDRRangeParser($netmaskResolver);
 
-$start = new \IpTool\Ip\Ip('1.0.0.0');
-$end   = new \IpTool\Ip\Ip('1.0.0.255');
-$range = new \IpTool\Ip\IpRange($start, $end);
+$start = new \IpTool\ValueObject\IP\IPv4('1.0.0.0');
+$end   = new \IpTool\ValueObject\IP\IPv4('1.0.0.255');
+$range = new \IpTool\ValueObject\IP\Range($start, $end);
 
-/** @var $cidrs \IpTool\Ip\Cidr[] */
+/** @var $cidrs \IpTool\ValueObject\CIDR[] */
 $cidrs = $parser->parseRange($range);
 
 foreach($cidrs as $cidr) {

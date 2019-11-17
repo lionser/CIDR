@@ -2,31 +2,31 @@
 
 namespace IpTool\Parser;
 
-use IpTool\Ip\Cidr;
-use IpTool\Ip\Ip;
-use IpTool\Ip\RangeInterface;
-use IpTool\Resolver\NetmaskResolver;
+use IpTool\Detector\NetmaskDetector;
+use IpTool\ValueObject\CIDR;
+use IpTool\ValueObject\IP\IPv4;
+use IpTool\ValueObject\IP\RangeInterface;
 
-class CidrRangeParser implements RangeParserInterface
+class CIDRRangeParser implements RangeParserInterface
 {
     private const MAX_PREFIX_BITS = 32;
 
     /**
-     * @var NetmaskResolver
+     * @var NetmaskDetector
      */
     private $netmaskResolver;
 
     /**
-     * @param NetmaskResolver $netmaskResolver
+     * @param NetmaskDetector $netmaskResolver
      */
-    public function __construct(NetmaskResolver $netmaskResolver)
+    public function __construct(NetmaskDetector $netmaskResolver)
     {
         $this->netmaskResolver = $netmaskResolver;
     }
 
     /**
      * {@inheritdoc}
-     * @return Cidr[]
+     * @return CIDR[]
      */
     public function parseRange(RangeInterface $range): array
     {
@@ -40,8 +40,8 @@ class CidrRangeParser implements RangeParserInterface
             $bitsDiff = self::MAX_PREFIX_BITS - intval(log($end - $start + 1) / log(2));
             $bits     = ($maxBits > $bitsDiff) ? $maxBits : $bitsDiff;
 
-            $ip      = new Ip(long2ip($start));
-            $cidrs[] = new Cidr($ip, $bits);
+            $ip      = new IPv4(long2ip($start));
+            $cidrs[] = new CIDR($ip, $bits);
 
             $start += pow(2, (self::MAX_PREFIX_BITS - $bits));
         }
