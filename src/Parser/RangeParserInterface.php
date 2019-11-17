@@ -2,15 +2,15 @@
 
 namespace IpTool\Parser;
 
-use IpTool\Ip\Cidr;
-use IpTool\Ip\RangeInterface;
+use IpTool\ValueObject\CIDR;
+use IpTool\ValueObject\IP\RangeInterface;
 
 interface RangeParserInterface
 {
     /**
      * @param RangeInterface $range
      *
-     * @return Cidr[]
+     * @return CIDR[]
      */
     public function parseRange(RangeInterface $range): array;
 }

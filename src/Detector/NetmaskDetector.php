@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace IpTool\Resolver;
+namespace IpTool\Detector;
 
-class NetmaskResolver
+class NetmaskDetector
 {
     /**
      * @param string $ip

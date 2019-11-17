@@ -1,11 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace IpTool\Ip;
+namespace IpTool\ValueObject;
 
-class Cidr
+use IpTool\ValueObject\IP\IPInterface;
+
+class CIDR
 {
     /**
-     * @var Ip
+     * @var IPInterface
      */
     private $ip;
 
@@ -15,19 +17,19 @@ class Cidr
     private $bits;
 
     /**
-     * @param Ip $ip
+     * @param IPInterface $ip
      * @param int $bits
      */
-    public function __construct(Ip $ip, int $bits)
+    public function __construct(IPInterface $ip, int $bits)
     {
         $this->ip   = $ip;
         $this->bits = $bits;
     }
 
     /**
-     * @return Ip
+     * @return IPInterface
      */
-    public function getIp(): Ip
+    public function getIp(): IPInterface
     {
         return $this->ip;
     }

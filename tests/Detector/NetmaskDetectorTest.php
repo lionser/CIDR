@@ -1,22 +1,22 @@
 <?php declare(strict_types=1);
 
-namespace IpTool\Tests\Resolver;
+namespace IpTool\Tests\Detector;
 
-use IpTool\Resolver\NetmaskResolver;
+use IpTool\Detector\NetmaskDetector;
 use PHPUnit\Framework\TestCase;
 
-class NetmaskResolverTest extends TestCase
+class NetmaskDetectorTest extends TestCase
 {
     /**
-     * @var NetmaskResolver
+     * @var NetmaskDetector
      */
-    private $netmaskResolver;
+    private $netmaskDetector;
 
     public function setUp()
     {
         parent::setUp();
 
-        $this->netmaskResolver = new NetmaskResolver();
+        $this->netmaskDetector = new NetmaskDetector();
     }
 
     /**
@@ -27,7 +27,7 @@ class NetmaskResolverTest extends TestCase
      */
     public function testResolve(string $ip, string $netmask): void
     {
-        $this->assertEquals($netmask, $this->netmaskResolver->resolve($ip));
+        $this->assertEquals($netmask, $this->netmaskDetector ->resolve($ip));
     }
 
     /**
