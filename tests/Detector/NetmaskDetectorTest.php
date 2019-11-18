@@ -3,6 +3,8 @@
 namespace IpTool\Tests\Detector;
 
 use IpTool\Detector\NetmaskDetector;
+use IpTool\ValueObject\IP\IPv4;
+use IpTool\ValueObject\IP\Netmask;
 use PHPUnit\Framework\TestCase;
 
 class NetmaskDetectorTest extends TestCase
@@ -25,9 +27,9 @@ class NetmaskDetectorTest extends TestCase
      * @param string $ip
      * @param string $netmask
      */
-    public function testResolve(string $ip, string $netmask): void
+    public function testDetect(string $ip, string $netmask): void
     {
-        $this->assertEquals($netmask, $this->netmaskDetector ->resolve($ip));
+        $this->assertEquals(new Netmask($netmask), $this->netmaskDetector->detect(new IPv4($ip)));
     }
 
     /**

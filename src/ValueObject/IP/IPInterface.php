@@ -8,4 +8,9 @@ interface IPInterface
      * @return string
      */
     public function getAddress(): string;
+
+    /**
+     * @return int
+     */
+    public function getProperAddress(): int;
 }

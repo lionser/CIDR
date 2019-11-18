@@ -4,24 +4,25 @@ namespace IpTool\Parser;
 
 use IpTool\Detector\NetmaskDetector;
 use IpTool\ValueObject\CIDR;
+use IpTool\ValueObject\IP\IPInterface;
 use IpTool\ValueObject\IP\IPv4;
 use IpTool\ValueObject\IP\RangeInterface;
 
-class CIDRRangeParser implements RangeParserInterface
+class CIDRParser implements RangeParserInterface
 {
     private const MAX_PREFIX_BITS = 32;
 
     /**
      * @var NetmaskDetector
      */
-    private $netmaskResolver;
+    private $netmaskDetector;
 
     /**
-     * @param NetmaskDetector $netmaskResolver
+     * @param NetmaskDetector $netmaskDetector
      */
-    public function __construct(NetmaskDetector $netmaskResolver)
+    public function __construct(NetmaskDetector $netmaskDetector)
     {
-        $this->netmaskResolver = $netmaskResolver;
+        $this->netmaskDetector = $netmaskDetector;
     }
 
     /**
@@ -30,17 +31,17 @@ class CIDRRangeParser implements RangeParserInterface
      */
     public function parseRange(RangeInterface $range): array
     {
-        $start = ip2long((string) $range->getStart());
-        $end   = ip2long((string) $range->getEnd());
+        $start = $range->getStart()->getProperAddress();
+        $end   = $range->getEnd()->getProperAddress();
 
         $cidrs = [];
 
         while ($end >= $start) {
-            $maxBits  = $this->getMaxBits(long2ip($start));
+            $ip       = new IPv4(long2ip($start));
+            $maxBits  = $this->getMaxBits($ip);
             $bitsDiff = self::MAX_PREFIX_BITS - intval(log($end - $start + 1) / log(2));
             $bits     = ($maxBits > $bitsDiff) ? $maxBits : $bitsDiff;
 
-            $ip      = new IPv4(long2ip($start));
             $cidrs[] = new CIDR($ip, $bits);
 
             $start += pow(2, (self::MAX_PREFIX_BITS - $bits));
@@ -68,23 +69,23 @@ class CIDRRangeParser implements RangeParserInterface
     }
 
     /**
-     * @param string $netmask
+     * @param IPInterface $netmask
      *
      * @return int
      */
-    private function convertNetmaskToBits(string $netmask): int
+    private function convertNetmaskToBits(IPInterface $netmask): int
     {
-        return $this->getBitsCount(ip2long($netmask));
+        return $this->getBitsCount($netmask->getProperAddress());
     }
 
     /**
-     * @param string $ip
+     * @param IPInterface $ip
      *
      * @return int
      */
-    private function getMaxBits(string $ip): int
+    private function getMaxBits(IPInterface $ip): int
     {
-        $netmask = $this->netmaskResolver->resolve($ip);
+        $netmask = $this->netmaskDetector->detect($ip);
 
         return $this->convertNetmaskToBits($netmask);
     }

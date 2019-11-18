@@ -26,7 +26,6 @@ class Range implements RangeInterface
 
     /**
      * {@inheritdoc}
-     * @return IPInterface
      */
     public function getStart(): IPInterface
     {
@@ -35,7 +34,6 @@ class Range implements RangeInterface
 
     /**
      * {@inheritdoc}
-     * @return IPInterface
      */
     public function getEnd(): IPInterface
     {

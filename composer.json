@@ -8,7 +8,7 @@
         "cidr",
         "parser"
     ],
-    "homepage": "https://github.com/dev-sl/cidr",
+    "homepage": "https://github.com/lionser/cidr",
     "license": "MIT",
     "authors": [
         {
