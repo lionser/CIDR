@@ -2,15 +2,18 @@
 
 namespace IpTool\Detector;
 
+use IpTool\ValueObject\IP\IPInterface;
+use IpTool\ValueObject\IP\Netmask;
+
 class NetmaskDetector
 {
     /**
-     * @param string $ip
+     * @param IPInterface $ip
      *
-     * @return string
+     * @return IPInterface
      */
-    public function resolve(string $ip): string
+    public function detect(IPInterface $ip): IPInterface
     {
-        return long2ip(-(ip2long($ip) & -(ip2long($ip))));
+        return new Netmask(long2ip(-(ip2long($ip->getAddress()) & -(ip2long($ip->getAddress())))));
     }
 }

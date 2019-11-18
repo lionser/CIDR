@@ -41,7 +41,7 @@ class CIDRRangeParserTest extends TestCase
         $ipRange = new Range($ipStart, $ipEnd);
 
         $cidrs = array_map(function (CIDR $cidr): string {
-            return (string)$cidr;
+            return (string) $cidr;
         }, $this->parser->parseRange($ipRange));
 
         $this->assertEquals($cidrs, $expectedCidr);

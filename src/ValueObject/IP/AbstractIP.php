@@ -26,10 +26,25 @@ abstract class AbstractIP implements IPInterface
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function getProperAddress(): int
+    {
+        return ip2long($this->getAddress());
+    }
+
+    /**
      * @return int
      */
     abstract public function getVersion(): int;
 
+    /**
+     * @return bool
+     */
+    public function isValid(): bool
+    {
+        return filter_var($this->getAddress(), FILTER_VALIDATE_IP);
+    }
     /**
      * @return string
      */

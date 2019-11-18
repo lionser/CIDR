@@ -2,9 +2,7 @@
 
 namespace IpTool\ValueObject\IP;
 
-use IpTool\IP\Version;
-
-class IPv4 extends AbstractIP
+class Netmask extends AbstractIP
 {
     /**
      * {@inheritdoc}

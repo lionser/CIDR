@@ -4,6 +4,13 @@ namespace IpTool\ValueObject\IP;
 
 interface RangeInterface
 {
-    public function getStart();
-    public function getEnd();
+    /**
+     * @return IPInterface
+     */
+    public function getStart(): IPInterface;
+
+    /**
+     * @return IPInterface
+     */
+    public function getEnd(): IPInterface;
 }
