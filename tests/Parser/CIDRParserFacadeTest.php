@@ -2,49 +2,21 @@
 
 namespace IpTool\Tests\Parser;
 
-use IpTool\Detector\NetmaskDetector;
-use IpTool\Parser\CIDRRangeParser;
-use IpTool\Parser\RangeParserInterface;
-use IpTool\ValueObject\CIDR;
-use IpTool\ValueObject\IP\IPv4;
-use IpTool\ValueObject\IP\Range;
+use IpTool\Parser\CIDRParserFacade;
 use PHPUnit\Framework\TestCase;
 
-class CIDRRangeParserTest extends TestCase
+class CIDRParserFacadeTest extends TestCase
 {
-    /**
-     * @var RangeParserInterface
-     */
-    private $parser;
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setUp(): void
-    {
-        parent::setUp();
-
-        $this->parser = new CIDRRangeParser(new NetmaskDetector());
-    }
-
     /**
      * @dataProvider ipRangeProvider
      *
      * @param string $start
      * @param string $end
-     * @param array $expectedCidr
+     * @param string[] $expected
      */
-    public function testParseRange(string $start, string $end, array $expectedCidr): void
+    public function testParse(string $start, string $end, array $expected): void
     {
-        $ipStart = new IPv4($start);
-        $ipEnd   = new IPv4($end);
-        $ipRange = new Range($ipStart, $ipEnd);
-
-        $cidrs = array_map(function (CIDR $cidr): string {
-            return (string) $cidr;
-        }, $this->parser->parseRange($ipRange));
-
-        $this->assertEquals($cidrs, $expectedCidr);
+        $this->assertEquals($expected, CIDRParserFacade::parse($start, $end));
     }
 
     /**

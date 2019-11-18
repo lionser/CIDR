@@ -8,7 +8,7 @@ use IpTool\ValueObject\IP\IPInterface;
 use IpTool\ValueObject\IP\IPv4;
 use IpTool\ValueObject\IP\RangeInterface;
 
-class CIDRRangeParser implements RangeParserInterface
+class CIDRParser implements RangeParserInterface
 {
     private const MAX_PREFIX_BITS = 32;
 
