@@ -8,4 +8,9 @@ before_script:
   - curl --version
   - composer install --no-interaction --prefer-source --dev
 
-script: make test
+script:
+  - mkdir -p build/logs
+  - make test
+
+after_success:
+  - travis_retry php vendor/bin/php-coveralls
