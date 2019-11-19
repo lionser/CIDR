@@ -1,6 +1,6 @@
 # The CIDR library for create CIDR's from IP range.
 
-[![Build Status](https://travis-ci.com/dev-sl/cidr.svg?branch=master)](https://travis-ci.com/dev-sl/cidr)
+[![Build Status](https://travis-ci.com/lionser/cidr.svg?branch=master)](https://travis-ci.com/dev-sl/cidr)
 
 CIDR - Classless Inter-Domain Routing. [Wiki](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 
