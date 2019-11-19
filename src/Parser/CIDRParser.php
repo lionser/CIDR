@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace IpTool\Parser;
+namespace Lionser\Parser;
 
-use IpTool\Detector\NetmaskDetector;
-use IpTool\ValueObject\CIDR;
-use IpTool\ValueObject\IP\IPInterface;
-use IpTool\ValueObject\IP\IPv4;
-use IpTool\ValueObject\IP\RangeInterface;
+use Lionser\Detector\NetmaskDetector;
+use Lionser\ValueObject\CIDR;
+use Lionser\ValueObject\IP\IPInterface;
+use Lionser\ValueObject\IP\IPv4;
+use Lionser\ValueObject\IP\RangeInterface;
 
 class CIDRParser implements RangeParserInterface
 {

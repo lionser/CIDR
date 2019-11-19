@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace IpTool\ValueObject\IP;
+namespace Lionser\ValueObject\IP;
 
 class Netmask extends AbstractIP
 {

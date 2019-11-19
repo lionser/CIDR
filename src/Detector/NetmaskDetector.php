@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace IpTool\Detector;
+namespace Lionser\Detector;
 
-use IpTool\ValueObject\IP\IPInterface;
-use IpTool\ValueObject\IP\Netmask;
+use Lionser\ValueObject\IP\IPInterface;
+use Lionser\ValueObject\IP\Netmask;
 
 class NetmaskDetector
 {

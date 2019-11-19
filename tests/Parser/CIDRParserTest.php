@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace IpTool\Tests\Parser;
+namespace Lionser\Tests\Parser;
 
-use IpTool\Detector\NetmaskDetector;
-use IpTool\Parser\CIDRParser;
-use IpTool\Parser\RangeParserInterface;
-use IpTool\ValueObject\CIDR;
-use IpTool\ValueObject\IP\IPv4;
-use IpTool\ValueObject\IP\Range;
+use Lionser\Detector\NetmaskDetector;
+use Lionser\Parser\CIDRParser;
+use Lionser\Parser\RangeParserInterface;
+use Lionser\ValueObject\CIDR;
+use Lionser\ValueObject\IP\IPv4;
+use Lionser\ValueObject\IP\Range;
 use PHPUnit\Framework\TestCase;
 
 class CIDRParserTest extends TestCase

@@ -1,6 +1,11 @@
 # The CIDR library for create CIDR's from IP range.
 
-[![Build Status](https://travis-ci.com/lionser/cidr.svg?branch=master)](https://travis-ci.com/dev-sl/cidr)
+![Build Status](https://travis-ci.com/lionser/cidr.svg?branch=master)
+![Coverage Status](https://img.shields.io/coveralls/github/lionser/cidr/master)
+![Version](https://img.shields.io/packagist/v/lionser/cidr)
+![License](https://img.shields.io/github/license/lionser/cidr)
+![Stars](https://img.shields.io/github/stars/lionser/cidr)
+![Downloads](https://img.shields.io/packagist/dt/lionser/cidr)
 
 CIDR - Classless Inter-Domain Routing. [Wiki](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 
@@ -17,7 +22,7 @@ curl -sS https://getcomposer.org/installer | php
 Next, run the Composer command to install the latest stable version of CIDR Library:
 
 ```bash
-composer require iptool/cidr
+composer require lionser/cidr
 ```
 
 After installing, you need to require Composer's autoloader:
@@ -35,15 +40,20 @@ composer update
 Usage example:
 
 ```php
-$netmaskDetectror = new \IpTool\Detector\NetmaskDetector();
-$parser           = new \IpTool\Parser\CIDRRangeParser($netmaskResolver);
+$netmaskDetectror = new \Lionser\Detector\NetmaskDetector();
+$parser           = new \Lionser\Parser\CIDRRangeParser($netmaskDetectror);
 
-$start = new \IpTool\ValueObject\IP\IPv4('1.0.0.0');
-$end   = new \IpTool\ValueObject\IP\IPv4('1.0.0.255');
-$range = new \IpTool\ValueObject\IP\Range($start, $end);
+$start = new \Lionser\ValueObject\IP\IPv4('1.0.0.0');
+$end   = new \Lionser\ValueObject\IP\IPv4('1.0.0.255');
+$range = new \Lionser\ValueObject\IP\Range($start, $end);
 
-/** @var $cidrs \IpTool\ValueObject\CIDR[] */
+/** @var $cidrs \Lionser\ValueObject\CIDR[] */
 $cidrs = $parser->parseRange($range);
+
+# Or facade usage
+
+/** @var $cidrs \Lionser\ValueObject\CIDR[] */
+$cidrs = \Lionser\Parser\CIDRParserFacade::parse('1.0.0.0', '1.0.0.255');
 
 foreach($cidrs as $cidr) {
     echo $cidr; # '1.0.0.0\24'

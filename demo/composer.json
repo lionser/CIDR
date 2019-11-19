@@ -1,12 +1,23 @@
 {
     "name": "cidr/demo",
+    "type": "project",
+    "description": "Demo project for see at CIDR parser library.",
+    "keywords": [
+        "ip",
+        "ip range",
+        "cidr",
+        "parser"
+    ],
+    "homepage": "https://github.com/lionser/cidr",
+    "license": "MIT",
     "authors": [
         {
-            "name": "lionser",
-            "email": "gm.lion@bigmir.net"
+            "name": "Sergey Levchuk",
+            "email": "contact@lionser.tk",
+            "role": "Developer"
         }
     ],
     "require": {
-        "iptool/cidr": "^1.0"
+        "lionser/cidr": "^1.0"
     }
 }

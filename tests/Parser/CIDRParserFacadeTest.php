@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace IpTool\Tests\Parser;
+namespace Lionser\Tests\Parser;
 
-use IpTool\Parser\CIDRParserFacade;
+use Lionser\Parser\CIDRParserFacade;
 use PHPUnit\Framework\TestCase;
 
 class CIDRParserFacadeTest extends TestCase

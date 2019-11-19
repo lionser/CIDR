@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace IpTool\Tests\Detector;
+namespace Lionser\Tests\Detector;
 
-use IpTool\Detector\NetmaskDetector;
-use IpTool\ValueObject\IP\IPv4;
-use IpTool\ValueObject\IP\Netmask;
+use Lionser\Detector\NetmaskDetector;
+use Lionser\ValueObject\IP\IPv4;
+use Lionser\ValueObject\IP\Netmask;
 use PHPUnit\Framework\TestCase;
 
 class NetmaskDetectorTest extends TestCase
