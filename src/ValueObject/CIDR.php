@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace IpTool\ValueObject;
+namespace Lionser\ValueObject;
 
-use IpTool\ValueObject\IP\IPInterface;
+use Lionser\ValueObject\IP\IPInterface;
 
 class CIDR
 {

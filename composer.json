@@ -1,5 +1,5 @@
 {
-    "name": "iptool/cidr",
+    "name": "lionser/cidr",
     "type": "library",
     "description": "Library for parse CIDR from ip range.",
     "keywords": [
@@ -13,7 +13,7 @@
     "authors": [
         {
             "name": "Sergey Levchuk",
-            "email": "gm.lion@bigmir.net",
+            "email": "contact@lionser.tk",
             "role": "Developer"
         }
     ],
@@ -29,12 +29,12 @@
     },
     "autoload": {
         "psr-4": {
-            "IpTool\\": "src"
+            "Lionser\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "IpTool\\Tests\\": "tests/"
+            "Lionser\\Tests\\": "tests/"
         }
     }
 }

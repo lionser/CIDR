@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace IpTool\Parser;
+namespace Lionser\Parser;
 
-use IpTool\ValueObject\IP\RangeInterface;
+use Lionser\ValueObject\IP\RangeInterface;
 
 interface RangeParserInterface
 {
