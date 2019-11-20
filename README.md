@@ -1,7 +1,7 @@
 # The CIDR library for create CIDR's from IP range.
 
 ![Build Status](https://travis-ci.com/lionser/cidr.svg?branch=master)
-![Coverage Status](https://img.shields.io/coveralls/github/lionser/cidr/master)
+![Coverage Status](https://img.shields.io/coveralls/github/lionser/CIDR/master)
 ![Version](https://img.shields.io/packagist/v/lionser/cidr)
 ![License](https://img.shields.io/github/license/lionser/cidr)
 ![Stars](https://img.shields.io/github/stars/lionser/cidr)
