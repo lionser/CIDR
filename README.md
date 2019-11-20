@@ -5,7 +5,7 @@
 ![Version](https://img.shields.io/packagist/v/lionser/cidr)
 ![License](https://img.shields.io/github/license/lionser/cidr)
 ![Stars](https://img.shields.io/github/stars/lionser/cidr)
-![Downloads](https://img.shields.io/packagist/dt/lionser/cidr)
+![Downloads](https://img.shields.io/packagist/dt/lionser/CIDR)
 
 CIDR - Classless Inter-Domain Routing. [Wiki](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 
