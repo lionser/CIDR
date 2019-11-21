@@ -2,12 +2,12 @@
 
 namespace Lionser\ValueObject;
 
-use Lionser\ValueObject\IP\IPInterface;
+use Lionser\ValueObject\IP\IpInterface;
 
-class CIDR
+class Cidr
 {
     /**
-     * @var IPInterface
+     * @var IpInterface
      */
     private $ip;
 
@@ -17,19 +17,19 @@ class CIDR
     private $bits;
 
     /**
-     * @param IPInterface $ip
+     * @param IpInterface $ip
      * @param int $bits
      */
-    public function __construct(IPInterface $ip, int $bits)
+    public function __construct(IpInterface $ip, int $bits)
     {
         $this->ip   = $ip;
         $this->bits = $bits;
     }
 
     /**
-     * @return IPInterface
+     * @return IpInterface
      */
-    public function getIp(): IPInterface
+    public function getIp(): IpInterface
     {
         return $this->ip;
     }

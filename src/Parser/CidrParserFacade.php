@@ -3,26 +3,26 @@
 namespace Lionser\Parser;
 
 use Lionser\Detector\NetmaskDetector;
-use Lionser\ValueObject\CIDR;
-use Lionser\ValueObject\IP\IPv4;
+use Lionser\ValueObject\Cidr;
+use Lionser\ValueObject\IP\IpV4;
 use Lionser\ValueObject\IP\Range;
 
-class CIDRParserFacade
+class CidrParserFacade
 {
     /**
      * @param string $start
      * @param string $end
      *
-     * @return CIDR[]
+     * @return Cidr[]
      */
     public static function parse(string $start, string $end): array
     {
-        $parser = new CIDRParser(new NetmaskDetector());
+        $parser = new CidrParser(new NetmaskDetector());
 
         return $parser->parseRange(
             new Range(
-                new IPv4($start),
-                new IPv4($end)
+                new IpV4($start),
+                new IpV4($end)
             )
         );
     }

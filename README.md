@@ -1,11 +1,10 @@
 # The CIDR library for create CIDR's from IP range.
 
 ![Build Status](https://travis-ci.com/lionser/cidr.svg?branch=master)
-![Coverage Status](https://img.shields.io/coveralls/github/lionser/cidr/master)
+![PHP from Packagist](https://img.shields.io/packagist/php-v/lionser/cidr)
 ![Version](https://img.shields.io/packagist/v/lionser/cidr)
+![Coverage Status](https://img.shields.io/coveralls/github/lionser/cidr/master)
 ![License](https://img.shields.io/github/license/lionser/cidr)
-![Stars](https://img.shields.io/github/stars/lionser/cidr)
-![Downloads](https://img.shields.io/packagist/dt/lionser/cidr)
 
 CIDR - Classless Inter-Domain Routing. [Wiki](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 
@@ -41,19 +40,19 @@ Usage example:
 
 ```php
 $netmaskDetectror = new \Lionser\Detector\NetmaskDetector();
-$parser           = new \Lionser\Parser\CIDRRangeParser($netmaskDetectror);
+$parser           = new \Lionser\Parser\CidrRangeParser($netmaskDetectror);
 
-$start = new \Lionser\ValueObject\IP\IPv4('1.0.0.0');
-$end   = new \Lionser\ValueObject\IP\IPv4('1.0.0.255');
+$start = new \Lionser\ValueObject\IP\IpV4('1.0.0.0');
+$end   = new \Lionser\ValueObject\IP\IpV4('1.0.0.255');
 $range = new \Lionser\ValueObject\IP\Range($start, $end);
 
-/** @var $cidrs \Lionser\ValueObject\CIDR[] */
+/** @var $cidrs \Lionser\ValueObject\Cidr[] */
 $cidrs = $parser->parseRange($range);
 
 # Or facade usage
 
-/** @var $cidrs \Lionser\ValueObject\CIDR[] */
-$cidrs = \Lionser\Parser\CIDRParserFacade::parse('1.0.0.0', '1.0.0.255');
+/** @var $cidrs \Lionser\ValueObject\Cidr[] */
+$cidrs = \Lionser\Parser\CidrParserFacade::parse('1.0.0.0', '1.0.0.255');
 
 foreach($cidrs as $cidr) {
     echo $cidr; # '1.0.0.0\24'

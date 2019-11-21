@@ -2,7 +2,9 @@
 
 namespace Lionser\ValueObject\IP;
 
-class Netmask extends AbstractIP
+use Lionser\IP\Version;
+
+class Netmask extends AbstractIp
 {
     /**
      * {@inheritdoc}

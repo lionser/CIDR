@@ -5,12 +5,12 @@ namespace Lionser\ValueObject\IP;
 interface RangeInterface
 {
     /**
-     * @return IPInterface
+     * @return IpInterface
      */
-    public function getStart(): IPInterface;
+    public function getStart(): IpInterface;
 
     /**
-     * @return IPInterface
+     * @return IpInterface
      */
-    public function getEnd(): IPInterface;
+    public function getEnd(): IpInterface;
 }

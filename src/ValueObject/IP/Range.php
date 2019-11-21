@@ -5,20 +5,20 @@ namespace Lionser\ValueObject\IP;
 class Range implements RangeInterface
 {
     /**
-     * @var IPInterface
+     * @var IpInterface
      */
     private $start;
 
     /**
-     * @var IPInterface
+     * @var IpInterface
      */
     private $end;
 
     /**
-     * @param IPInterface $start
-     * @param IPInterface $end
+     * @param IpInterface $start
+     * @param IpInterface $end
      */
-    public function __construct(IPInterface $start, IPInterface $end)
+    public function __construct(IpInterface $start, IpInterface $end)
     {
         $this->start = $start;
         $this->end   = $end;
@@ -27,7 +27,7 @@ class Range implements RangeInterface
     /**
      * {@inheritdoc}
      */
-    public function getStart(): IPInterface
+    public function getStart(): IpInterface
     {
         return $this->start;
     }
@@ -35,7 +35,7 @@ class Range implements RangeInterface
     /**
      * {@inheritdoc}
      */
-    public function getEnd(): IPInterface
+    public function getEnd(): IpInterface
     {
         return $this->end;
     }

@@ -4,7 +4,7 @@ namespace Lionser\ValueObject\IP;
 
 use Lionser\IP\Version;
 
-class IPv4 extends AbstractIP
+class IpV4 extends AbstractIp
 {
     /**
      * {@inheritdoc}

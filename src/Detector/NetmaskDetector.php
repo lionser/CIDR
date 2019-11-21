@@ -2,17 +2,17 @@
 
 namespace Lionser\Detector;
 
-use Lionser\ValueObject\IP\IPInterface;
+use Lionser\ValueObject\IP\IpInterface;
 use Lionser\ValueObject\IP\Netmask;
 
 class NetmaskDetector
 {
     /**
-     * @param IPInterface $ip
+     * @param IpInterface $ip
      *
-     * @return IPInterface
+     * @return IpInterface
      */
-    public function detect(IPInterface $ip): IPInterface
+    public function detect(IpInterface $ip): IpInterface
     {
         return new Netmask(long2ip(-(ip2long($ip->getAddress()) & -(ip2long($ip->getAddress())))));
     }
