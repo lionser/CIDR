@@ -1,10 +1,9 @@
 # The CIDR library for create CIDR's from IP range.
 
 ![Build Status](https://travis-ci.com/lionser/cidr.svg?branch=master)
-![Coverage Status](https://img.shields.io/coveralls/github/lionser/CIDR/master)
+![PHP from Packagist](https://img.shields.io/packagist/php-v/lionser/cidr)
 ![Version](https://img.shields.io/packagist/v/lionser/cidr)
-![Stars](https://img.shields.io/github/stars/lionser/cidr)
-![Downloads](https://img.shields.io/packagist/dt/lionser/CIDR)
+![Coverage Status](https://img.shields.io/coveralls/github/lionser/CIDR/master)
 ![License](https://img.shields.io/github/license/lionser/cidr)
 
 CIDR - Classless Inter-Domain Routing. [Wiki](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)

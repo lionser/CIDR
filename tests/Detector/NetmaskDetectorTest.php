@@ -3,7 +3,7 @@
 namespace Lionser\Tests\Detector;
 
 use Lionser\Detector\NetmaskDetector;
-use Lionser\ValueObject\IP\IPv4;
+use Lionser\ValueObject\IP\IpV4;
 use Lionser\ValueObject\IP\Netmask;
 use PHPUnit\Framework\TestCase;
 
@@ -29,7 +29,7 @@ class NetmaskDetectorTest extends TestCase
      */
     public function testDetect(string $ip, string $netmask): void
     {
-        $this->assertEquals(new Netmask($netmask), $this->netmaskDetector->detect(new IPv4($ip)));
+        $this->assertEquals(new Netmask($netmask), $this->netmaskDetector->detect(new IpV4($ip)));
     }
 
     /**

@@ -2,7 +2,7 @@
 
 namespace Lionser\ValueObject\IP;
 
-interface IPInterface
+interface IpInterface
 {
     /**
      * @return string

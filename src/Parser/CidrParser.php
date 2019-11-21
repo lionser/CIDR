@@ -3,12 +3,12 @@
 namespace Lionser\Parser;
 
 use Lionser\Detector\NetmaskDetector;
-use Lionser\ValueObject\CIDR;
-use Lionser\ValueObject\IP\IPInterface;
-use Lionser\ValueObject\IP\IPv4;
+use Lionser\ValueObject\Cidr;
+use Lionser\ValueObject\IP\IpInterface;
+use Lionser\ValueObject\IP\IpV4;
 use Lionser\ValueObject\IP\RangeInterface;
 
-class CIDRParser implements RangeParserInterface
+class CidrParser implements RangeParserInterface
 {
     private const MAX_PREFIX_BITS = 32;
 
@@ -27,7 +27,7 @@ class CIDRParser implements RangeParserInterface
 
     /**
      * {@inheritdoc}
-     * @return CIDR[]
+     * @return Cidr[]
      */
     public function parseRange(RangeInterface $range): array
     {
@@ -37,12 +37,12 @@ class CIDRParser implements RangeParserInterface
         $cidrs = [];
 
         while ($end >= $start) {
-            $ip       = new IPv4(long2ip($start));
+            $ip       = new IpV4(long2ip($start));
             $maxBits  = $this->getMaxBits($ip);
             $bitsDiff = self::MAX_PREFIX_BITS - intval(log($end - $start + 1) / log(2));
             $bits     = ($maxBits > $bitsDiff) ? $maxBits : $bitsDiff;
 
-            $cidrs[] = new CIDR($ip, $bits);
+            $cidrs[] = new Cidr($ip, $bits);
 
             $start += pow(2, (self::MAX_PREFIX_BITS - $bits));
         }
@@ -69,21 +69,21 @@ class CIDRParser implements RangeParserInterface
     }
 
     /**
-     * @param IPInterface $netmask
+     * @param IpInterface $netmask
      *
      * @return int
      */
-    private function convertNetmaskToBits(IPInterface $netmask): int
+    private function convertNetmaskToBits(IpInterface $netmask): int
     {
         return $this->getBitsCount($netmask->getProperAddress());
     }
 
     /**
-     * @param IPInterface $ip
+     * @param IpInterface $ip
      *
      * @return int
      */
-    private function getMaxBits(IPInterface $ip): int
+    private function getMaxBits(IpInterface $ip): int
     {
         $netmask = $this->netmaskDetector->detect($ip);
 

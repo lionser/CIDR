@@ -2,31 +2,11 @@
 
 namespace Lionser\Tests\Parser;
 
-use Lionser\Detector\NetmaskDetector;
-use Lionser\Parser\CIDRParser;
-use Lionser\Parser\RangeParserInterface;
-use Lionser\ValueObject\CIDR;
-use Lionser\ValueObject\IP\IPv4;
-use Lionser\ValueObject\IP\Range;
+use Lionser\Parser\CidrParserFacade;
 use PHPUnit\Framework\TestCase;
 
-class CIDRParserTest extends TestCase
+class CidrParserFacadeTest extends TestCase
 {
-    /**
-     * @var RangeParserInterface
-     */
-    private $parser;
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setUp(): void
-    {
-        parent::setUp();
-
-        $this->parser = new CIDRParser(new NetmaskDetector());
-    }
-
     /**
      * @dataProvider ipRangeProvider
      *
@@ -34,17 +14,9 @@ class CIDRParserTest extends TestCase
      * @param string $end
      * @param string[] $expected
      */
-    public function testParseRange(string $start, string $end, array $expected): void
+    public function testParse(string $start, string $end, array $expected): void
     {
-        $ipStart = new IPv4($start);
-        $ipEnd   = new IPv4($end);
-        $ipRange = new Range($ipStart, $ipEnd);
-
-        $cidrs = array_map(function (CIDR $cidr): string {
-            return (string) $cidr;
-        }, $this->parser->parseRange($ipRange));
-
-        $this->assertEquals($expected, $cidrs);
+        $this->assertEquals($expected, CidrParserFacade::parse($start, $end));
     }
 
     /**

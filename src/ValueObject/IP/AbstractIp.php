@@ -2,7 +2,7 @@
 
 namespace Lionser\ValueObject\IP;
 
-abstract class AbstractIP implements IPInterface
+abstract class AbstractIp implements IpInterface
 {
     /**
      * @var string
@@ -43,7 +43,7 @@ abstract class AbstractIP implements IPInterface
      */
     public function isValid(): bool
     {
-        return filter_var($this->getAddress(), FILTER_VALIDATE_IP);
+        return (bool) filter_var($this->getAddress(), FILTER_VALIDATE_IP);
     }
     /**
      * @return string
