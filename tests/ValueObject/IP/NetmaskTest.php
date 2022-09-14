@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Lionser\Tests\ValueObject\IP;
 
@@ -10,21 +12,15 @@ class NetmaskTest extends TestCase
 {
     private const NETMASK_FOO = '255.255.255.0';
 
-    /**
-     * @var IpInterface
-     */
-    private $netmask;
+    private IpInterface $netmask;
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->netmask = new Netmask(self::NETMASK_FOO);
     }
 
     public function testGetVersion(): void
     {
-        $this->assertEquals(4, $this->netmask->getVersion());
+        $this->assertEquals(4, $this->netmask->getVersion()->value);
     }
 }

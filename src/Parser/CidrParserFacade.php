@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Lionser\Parser;
 
@@ -10,9 +12,6 @@ use Lionser\ValueObject\IP\Range;
 class CidrParserFacade
 {
     /**
-     * @param string $start
-     * @param string $end
-     *
      * @return Cidr[]
      */
     public static function parse(string $start, string $end): array

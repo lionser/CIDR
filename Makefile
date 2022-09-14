@@ -10,4 +10,4 @@ coverage:
 	XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-html build/coverage/
 
 phpcs:
-	vendor/bin/phpcs --standard=PSR2 src/ tests/
+	vendor/bin/phpcs --standard=PSR12 src/ tests/

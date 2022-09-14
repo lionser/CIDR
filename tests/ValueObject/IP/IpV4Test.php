@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Lionser\Tests\ValueObject\IP;
 
@@ -10,31 +12,22 @@ class IpV4Test extends TestCase
 {
     private const IP_FOO = '127.0.0.1';
 
-    /**
-     * @var IpV4
-     */
-    private $ipV4;
+    private IpV4 $ipV4;
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->ipV4 = new IpV4(self::IP_FOO);
     }
 
     public function testGetVersion(): void
     {
-        $this->assertEquals(4, $this->ipV4->getVersion());
+        $this->assertEquals(4, $this->ipV4->getVersion()->value);
     }
 
     /**
      * @dataProvider ipProvider
-     *
-     * @param string $ip
-     * @param $expected
      */
-    public function testIsValid(string $ip, $expected): void
+    public function testIsValid(string $ip, bool $expected): void
     {
         $ip = new IpV4($ip);
 

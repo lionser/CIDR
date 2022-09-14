@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Lionser\Parser;
 
@@ -12,21 +14,11 @@ class CidrParser implements RangeParserInterface
 {
     private const MAX_PREFIX_BITS = 32;
 
-    /**
-     * @var NetmaskDetector
-     */
-    private $netmaskDetector;
-
-    /**
-     * @param NetmaskDetector $netmaskDetector
-     */
-    public function __construct(NetmaskDetector $netmaskDetector)
+    public function __construct(private readonly NetmaskDetector $netmaskDetector)
     {
-        $this->netmaskDetector = $netmaskDetector;
     }
 
     /**
-     * {@inheritdoc}
      * @return Cidr[]
      */
     public function parseRange(RangeInterface $range): array
@@ -50,11 +42,6 @@ class CidrParser implements RangeParserInterface
         return $cidrs;
     }
 
-    /**
-     * @param int $int
-     *
-     * @return int
-     */
     private function getBitsCount(int $int): int
     {
         $int = $int & 0xFFFFFFFF;
@@ -68,21 +55,11 @@ class CidrParser implements RangeParserInterface
         return $int;
     }
 
-    /**
-     * @param IpInterface $netmask
-     *
-     * @return int
-     */
     private function convertNetmaskToBits(IpInterface $netmask): int
     {
         return $this->getBitsCount($netmask->getProperAddress());
     }
 
-    /**
-     * @param IpInterface $ip
-     *
-     * @return int
-     */
     private function getMaxBits(IpInterface $ip): int
     {
         $netmask = $this->netmaskDetector->detect($ip);
