@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Lionser\Tests\Detector;
 
@@ -9,12 +11,9 @@ use PHPUnit\Framework\TestCase;
 
 class NetmaskDetectorTest extends TestCase
 {
-    /**
-     * @var NetmaskDetector
-     */
-    private $netmaskDetector;
+    private NetmaskDetector $netmaskDetector;
 
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -23,18 +22,12 @@ class NetmaskDetectorTest extends TestCase
 
     /**
      * @dataProvider netmaskProvider
-     *
-     * @param string $ip
-     * @param string $netmask
      */
     public function testDetect(string $ip, string $netmask): void
     {
         $this->assertEquals(new Netmask($netmask), $this->netmaskDetector->detect(new IpV4($ip)));
     }
 
-    /**
-     * @return \Generator
-     */
     public function netmaskProvider(): \Generator
     {
         yield ['1.0.0.0', '255.0.0.0'];

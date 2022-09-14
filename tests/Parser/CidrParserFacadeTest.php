@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Lionser\Tests\Parser;
 
@@ -10,8 +12,6 @@ class CidrParserFacadeTest extends TestCase
     /**
      * @dataProvider ipRangeProvider
      *
-     * @param string $start
-     * @param string $end
      * @param string[] $expected
      */
     public function testParse(string $start, string $end, array $expected): void
@@ -19,9 +19,6 @@ class CidrParserFacadeTest extends TestCase
         $this->assertEquals($expected, CidrParserFacade::parse($start, $end));
     }
 
-    /**
-     * @return \Generator
-     */
     public function ipRangeProvider(): \Generator
     {
         yield ['1.0.0.0', '1.0.0.255', ['1.0.0.0/24']];

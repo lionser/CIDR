@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Lionser\Tests\Parser;
 
@@ -12,15 +14,9 @@ use PHPUnit\Framework\TestCase;
 
 class CidrParserTest extends TestCase
 {
-    /**
-     * @var RangeParserInterface
-     */
-    private $parser;
+    private RangeParserInterface $parser;
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -30,8 +26,6 @@ class CidrParserTest extends TestCase
     /**
      * @dataProvider ipRangeProvider
      *
-     * @param string $start
-     * @param string $end
      * @param string[] $expected
      */
     public function testParseRange(string $start, string $end, array $expected): void
@@ -39,17 +33,11 @@ class CidrParserTest extends TestCase
         $ipStart = new IpV4($start);
         $ipEnd   = new IpV4($end);
         $ipRange = new Range($ipStart, $ipEnd);
-
-        $cidrs = array_map(function (Cidr $cidr): string {
-            return (string) $cidr;
-        }, $this->parser->parseRange($ipRange));
+        $cidrs   = array_map('strval', $this->parser->parseRange($ipRange));
 
         $this->assertEquals($expected, $cidrs);
     }
 
-    /**
-     * @return \Generator
-     */
     public function ipRangeProvider(): \Generator
     {
         yield ['1.0.0.0', '1.0.0.255', ['1.0.0.0/24']];
